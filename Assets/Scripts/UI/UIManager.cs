@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] private UIMainMenu _UIMainMenu;
+    [SerializeField] private UIStatus _UIStatus;
+    [SerializeField] private UIInventory _UIInventory;
 
-    [SerializeField] private UIMainMenu _MainMenu;
-    [SerializeField] private UIStatus _Status;
-    [SerializeField] private UIInventory _Inventory;
-
-    public UIMainMenu MainMenu => _MainMenu;
-    public UIStatus Status => _Status;
-    public UIInventory Inventory => _Inventory;
+    public UIMainMenu MainMenu => _UIMainMenu;
+    public UIStatus Status => _UIStatus;
+    public UIInventory Inventory => _UIInventory;
     
-    private GameObject currentPanel;
-
     public static UIManager instance;
 
     private void Awake()
@@ -28,6 +25,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         ShowMainMenu();
+        UpdateUI();
     }
 
     public void ShowMainMenu()
@@ -49,4 +47,8 @@ public class UIManager : MonoBehaviour
         Inventory.Show();
     }
 
+    public void UpdateUI()
+    {
+        //UIMainMenu.CharacterInfo();
+    }
 }
