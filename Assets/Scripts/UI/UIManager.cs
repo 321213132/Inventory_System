@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private UIMainMenu _UIMainMenu;
     [SerializeField] private UIStatus _UIStatus;
     [SerializeField] private UIInventory _UIInventory;
+    [SerializeField] private Character _Character;
 
     public UIMainMenu MainMenu => _UIMainMenu;
     public UIStatus Status => _UIStatus;
@@ -36,19 +37,18 @@ public class UIManager : MonoBehaviour
     }
     public void ShowState()
     {
-        MainMenu.Hide();
         Status.Show();
         Inventory.Hide();
     }
     public void ShowInventory()
     {
-        MainMenu.Hide();
         Status.Hide();
         Inventory.Show();
     }
 
     public void UpdateUI()
     {
-        //UIMainMenu.CharacterInfo();
+        _UIMainMenu.CharacterInfo(_Character);
+        _UIStatus.StatusInfo(_Character);
     }
 }

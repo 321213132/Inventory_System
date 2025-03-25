@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
 public class UIMainMenu : MonoBehaviour
@@ -9,10 +11,10 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] private Button statusButton;
     [SerializeField] private Button inventoryButton;
 
-    [SerializeField] private Text nameText;
-    [SerializeField] private Text levelText;
-    [SerializeField] private Text experienceText;
-    [SerializeField] private Text goldText;
+    [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private TextMeshProUGUI levelText;
+    [SerializeField] private TextMeshProUGUI experienceText;
+    [SerializeField] private TextMeshProUGUI goldText;
 
     private void Start()
     {
@@ -49,7 +51,7 @@ public class UIMainMenu : MonoBehaviour
     {
         if (character == null) return;
 
-        nameText.text = $"¿Ã∏ß : {character.name}";
+        nameText.text = $"{character.name}";
         levelText.text = $"Lv. {character.Level}";
         goldText.text = $"{character.Gold}";
     }
