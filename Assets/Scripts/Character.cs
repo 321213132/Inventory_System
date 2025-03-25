@@ -13,16 +13,7 @@ public class Character : MonoBehaviour
     public int Gold { get; private set; }
     public int Speed { get; private set; }
 
-    [SerializeField] private string name;
-    [SerializeField] private int level;
-    [SerializeField] private int experience;
-    [SerializeField] private int maxHealth;
-    [SerializeField] private int attackPower;
-    [SerializeField] private int defense;
-    [SerializeField] private int gold;
-    [SerializeField] private int speed;
-
-    private void Awake()
+    public void SetData(string name, int level, int experience, int maxHealth, int attackPower, int defense , int gold, int speed)
     {
         Name = name;
         Level = level;

@@ -34,17 +34,17 @@ public class UIMainMenu : MonoBehaviour
 
     public void OpenMainMenu()
     {
-        UIManager.instance.ShowMainMenu();
+        UIManager.Instance.ShowMainMenu();
     }
 
     public void OpenStatus()
     {
-        UIManager.instance.ShowState();
+        UIManager.Instance.ShowState();
     }
 
     public void OpenInventory()
     {
-        UIManager.instance.ShowInventory();
+        UIManager.Instance.ShowInventory();
     }
 
     public void CharacterInfo(Character character)
