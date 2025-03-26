@@ -6,19 +6,32 @@ using UnityEngine.UI;
 
 public class UISlot : MonoBehaviour
 {
-    [SerializeField] private Image icon;
-    [SerializeField] private TextMeshProUGUI itemName;
-    [SerializeField] private TextMeshProUGUI quantity;
+    [SerializeField] private Image itemIcon;
+    [SerializeField] private TextMeshProUGUI itemQuantity;
 
-    public void SetItme(Sprite itemIcon, string name, int count)
+    private Item curentItem;
+
+    public void SetItme(Item item)
     {
-        icon.sprite = itemIcon;
-        itemName.text = name;
-        quantity.text = count > 1 ? count.ToString() : "";
+        curentItem = item;
+        RefreshUI();
     }
 
     public void RefreshUI()
     {
-
+        if(curentItem != null)
+        {
+            itemIcon.sprite = curentItem.Icon;
+            itemIcon.enabled = true;
+            itemQuantity.text = curentItem.Quantity > 1 ? curentItem.Quantity.ToString() : "";
+            itemQuantity.enabled = curentItem.Quantity > 1;
+        }
+        else
+        {
+            itemIcon.sprite = null;
+            itemIcon.enabled = false;
+            itemQuantity.text = "";
+            itemQuantity.enabled = false;
+        }
     }
 }

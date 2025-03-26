@@ -8,8 +8,7 @@ public enum ItemType
     Equipment,  //장비형
     Material    //재료
 }
-
-public class Item
+public class Item : ScriptableObject
 {
     public string ItemName {  get; private set; }//아이템 이름
     public Sprite Icon { get; private set; }//아이템 아이콘
