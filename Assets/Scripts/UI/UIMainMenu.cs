@@ -51,7 +51,7 @@ public class UIMainMenu : MonoBehaviour
     {
         if (character == null) return;
 
-        nameText.text = $"{character.name}";
+        nameText.text = $"{character.Name}";
         levelText.text = $"Lv. {character.Level}";
         goldText.text = $"{character.Gold}";
     }

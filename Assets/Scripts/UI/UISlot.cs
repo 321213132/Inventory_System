@@ -14,6 +14,8 @@ public class UISlot : MonoBehaviour
     public void SetItme(Item item)
     {
         curentItem = item;
+        itemIcon.sprite = item.Icon;
+        itemIcon.gameObject.SetActive(true);
         RefreshUI();
     }
 

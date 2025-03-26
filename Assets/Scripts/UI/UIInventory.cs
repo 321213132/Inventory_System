@@ -10,7 +10,6 @@ public class UIInventory : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI levelText;
-    [SerializeField] private TextMeshProUGUI experienceText;
     [SerializeField] private TextMeshProUGUI goldText;
 
     [SerializeField] private UISlot slotprefab;//¿Œ∫•≈‰∏Æ ΩΩ∑‘ «¡∏Æ∆È
@@ -24,6 +23,36 @@ public class UIInventory : MonoBehaviour
         backButton.onClick.AddListener(UIManager.Instance.ShowMainMenu);
         InitInventoryUI(21);
     }
+    public void InitInventoryUI(int slotCount)
+    {
+        foreach (var slot in slots)
+        {
+            Destroy(slot.gameObject);
+        }
+
+
+        for (int i = 0;  i < slotCount; i++)
+        {
+            UISlot newslot = Instantiate(slotprefab, slotParent);
+            slots.Add(newslot);
+        }
+
+        SlotWithItems();
+    }
+
+    public void SlotWithItems()
+    {
+        List<Item> inventoryItems = GameManager.Instance.player.inventory;
+
+        for(int i = 0;i < inventoryItems.Count;i++)
+        {
+            if(i< slots.Count)
+            {
+                slots[i].SetItme(inventoryItems[i]);
+            }
+        }
+    }
+
     public void Show()
     {
         gameObject.SetActive(true);
@@ -37,17 +66,8 @@ public class UIInventory : MonoBehaviour
     {
         if (character == null) return;
 
-        nameText.text = $"{character.name}";
+        nameText.text = $"{character.Name}";
         levelText.text = $"Lv. {character.Level}";
         goldText.text = $"{character.Gold}";
-    }
-
-    public void InitInventoryUI(int slotCount)
-    {
-        for(int i = 0;  i < slotCount; i++)
-        {
-            UISlot newslot = Instantiate(slotprefab, slotParent);
-            slots.Add(newslot);
-        }
     }
 }
